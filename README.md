@@ -9,4 +9,4 @@ wiegand26.php?q=2817931
 
 It will output:
 
-2817931 --> 42/65419
+Weigand format: 2817931 --> 42/65419 
