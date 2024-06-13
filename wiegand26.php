@@ -37,7 +37,7 @@ if (empty($_GET)) {
         if(isset($_GET['q']) && ($_GET['q'] != "")) {
                 $q = securetext($_GET['q']);
                 $q1 = new Weigand($q);
-                echo "Weigand format: " . $q . "--> " . $q1.PHP_EOL;
+                echo "Weigand format: " . $q . " --> " . $q1.PHP_EOL;
         }
 
 }
