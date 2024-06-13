@@ -3,7 +3,6 @@
 $DOC_CHAR_SET = "UTF-8";
 date_default_timezone_set('Europe/Moscow');
 setlocale(LC_ALL, "ru_RU".$DOC_CHAR_SET);
-header("Content-type: text/html; charset=".$DOC_CHAR_SET);
 
 class Weigand
 {
@@ -26,11 +25,14 @@ function securetext($text) {
 }
 
 if (empty($_GET)) {
-        $errox = 403;
+	$errox = 418;
+        $text = "I'm a teapot";
         error_reporting(E_ALL);
         ini_set('display_errors', 'On');
         http_response_code($errox);
-        echo "<h2 style=\"background-color:orangered;padding:10px;\">Error: {$errox}</h2>";
+        $protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+        header($protocol . ' ' . $errox . ' ' . $text);
+        echo "<h2 style=\"background-color:orangered;padding:10px;\">HTTP error: {$errox} - {$text}</h2>";
         die();
 } else {
 
