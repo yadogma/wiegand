@@ -1,5 +1,10 @@
 <?php
 
+$DOC_CHAR_SET = "UTF-8";
+date_default_timezone_set('Europe/Moscow');
+setlocale(LC_ALL, "ru_RU".$DOC_CHAR_SET);
+header("Content-type: text/html; charset=".$DOC_CHAR_SET);
+
 class Weigand
 {
     public function __construct($x) {
@@ -21,18 +26,20 @@ function securetext($text) {
 }
 
 if (empty($_GET)) {
-	date_default_timezone_set('Europe/Moscow');
-	setlocale(LC_ALL, "ru_RU".$DOC_CHAR_SET);
-	header("Content-type: text/html; charset=".$DOC_CHAR_SET);
-	echo "exit";
-
+        $errox = 403;
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'On');
+        http_response_code($errox);
+        echo "<h2 style=\"background-color:orangered;padding:10px;\">Error: {$errox}</h2>";
+        die();
 } else {
 
-	if(isset($_GET['q']) && ($_GET['q'] != "")) {
-		$q = securetext($_GET['q']);
-		$w1 = new Weigand($q);
-		echo $w1.PHP_EOL;
-	}
+        if(isset($_GET['q']) && ($_GET['q'] != "")) {
+                $q = securetext($_GET['q']);
+                $q1 = new Weigand($q);
+                echo "Weigand формат карты: " . $q1.PHP_EOL;
+        }
+
 }
 
 ?>
