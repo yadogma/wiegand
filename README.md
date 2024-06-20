@@ -2,8 +2,6 @@
 
 8Byte or 64bit to wiegand 26 converter at PHP
 
-Convert Wiegand26 [DEC] to Weigand
-
 **for example request URL:**
 
 wiegand26.php?q=1599926137224430114
