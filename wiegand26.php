@@ -32,8 +32,7 @@ function Weigand2($val)
 	$res3 = substr($res,-24,24);
 	printf("%s = %s </br>\n",$val, bindec( $res3 ));
 
-	$res = "END";
-	return $res;
+	return "END";
 }
 
 function securetext($text) {
